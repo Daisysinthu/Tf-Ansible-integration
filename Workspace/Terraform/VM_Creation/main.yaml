@@ -1,0 +1,15 @@
+---
+- name: Use Terraform State
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Use Terraform Outputs
+      terraform:
+        state: /path/to/terraform.tfstate
+        backend_config:
+          key: path/to/terraform.tfstate
+      register: tf_outputs
+
+    - name: Print Terraform Outputs
+      debug:
+        var: tf_outputs
