@@ -1,0 +1,17 @@
+State commands
+
+terraform state list
+
+terraform state list <particular resource>
+
+Eg: terraform state list random_pet.my_pet
+
+terraform state mv <source> <dest>
+
+Eg to change the name of the resource:
+
+terraform state mv aws_dynamodb_table.state-locking ws_dynamodb_table.state-locking-db-01
+
+terraform state pull <source> <dest>  ---> To pull the state from cloud to local
+
+terraform state rm <resource-address> --> Only removes from state file not from infrastrcture
