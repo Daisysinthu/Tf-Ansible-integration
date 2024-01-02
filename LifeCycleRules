@@ -1,0 +1,15 @@
+resource "loca_file" "pets"{
+    filename = "/root/pets.txt"
+    content = "pets are awesome and dogs blocks contains ${data.loca_file.dogs}"
+
+    lifecycle {
+        create_before_destroy = true //ensures that resource to be created before destroying the older one
+    }
+    lifecycle {
+        prevent_destroy = true //ensures that resource not to be deleted
+    }
+    lifecycle {
+        ignore_changes = true //ensures that resource not to be deleted
+    }
+
+}
