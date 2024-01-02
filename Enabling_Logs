@@ -1,0 +1,17 @@
+> export TF_LOG = TRACE
+
+5 log levels:
+
+INFO
+WARNING
+ERROR
+DEBUG
+TRACE
+
+To store the logs in a persistent file
+> export TF_LOG_PATH = /tmp/terraform.log
+
+To unset the env vars
+
+unset TF_LOG
+unset TF_LOG_PATH
