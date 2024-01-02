@@ -1,0 +1,37 @@
+With Workspace, we can use the same config dir to create multiple infra envs.
+
+> terraform workspace new ProjectA
+
+> terraform workspace list
+
+main.tf:
+=======
+resource "local_file" "sample" {
+        filename = lookup(var.filename,terraform.workspace)
+        content = lookup(var.content,terraform.workspace)
+}
+
+variables.tf
+===========
+variable filename {
+        type = map
+        default = {
+           "ProjectA" = "/Users/daisydharshini/Documents/ProjectA.txt"
+           "ProjectB" = "/Users/daisydharshini/Documents/ProjectB.txt"
+        }
+
+}
+
+variable content {
+        type = map
+        default = {
+           "ProjectA" = "This is project A"
+           "ProjectB" =  "This is project B"
+        }
+
+}
+
+To switch between the Workspace:
+terraform workspace select ProjectA
+
+
